@@ -30,8 +30,7 @@ jobs:
           sudo apt-get install -y wget curl jq
       - name: Install Trivy security scanner
         run: |
-          wget -qO- https://github.com/aquasecurity/trivy/releases/download/v0.48.4/trivy_0.48.4_Linux-64bit.tar.gz | tar zxvf -
-          sudo mv trivy /usr/local/bin/
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.48.4
       - name: Log in to Azure Container Registry
         run: echo ${{ secrets.REGISTRY_PASSWORD }} | docker login ${{ secrets.REGISTRY_LOGIN_SERVER }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
       - name: Build Docker image
