@@ -1,6 +1,6 @@
 # See https://docs.docker.com/engine/reference/builder/
 # Use a specific Node.js LTS version as base image
-FROM node:18.20.3-alpine3.19.7
+FROM node:18.20.3-alpine3.19
 
 # Set working directory
 WORKDIR /app
