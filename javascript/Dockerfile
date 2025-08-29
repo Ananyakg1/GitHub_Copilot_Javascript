@@ -10,15 +10,17 @@ WORKDIR /app
 RUN addgroup -g 1001 -S nodejs && \
   adduser -S reactuser -u 1001
 
+
 # Copy package files first for better caching
-COPY javascript/package*.json ./
+COPY package*.json ./
 
 # Install dependencies with security optimizations
 RUN npm install --no-audit --no-fund && \
   npm cache clean --force
 
+
 # Copy source code
-COPY javascript/ .
+COPY . .
 
 # Change ownership to non-root user
 RUN chown -R reactuser:nodejs /app
