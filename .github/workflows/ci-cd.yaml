@@ -22,7 +22,8 @@ jobs:
           echo "BUILD_ID=$BUILD_ID" >> $GITHUB_ENV
           echo "BUILD_ID=$BUILD_ID" >> $GITHUB_OUTPUT
       - name: Install Azure CLI
-        uses: azure/setup-azurecli@v3
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
       - name: Install additional dependencies
         run: |
           sudo apt-get update
