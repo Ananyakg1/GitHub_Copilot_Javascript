@@ -5,6 +5,7 @@ FROM node:18.20.3-alpine3.19
 # Set working directory
 WORKDIR /app
 
+
 # Copy only package.json and package-lock.json first for dependency install
 COPY package.json package-lock.json ./
 
@@ -13,9 +14,9 @@ RUN npm install --omit=dev \
   && npm cache clean --force \
   && npm audit fix --force
 
-# Copy the rest of the application source code
-COPY src ./src
-COPY .env* ./
+
+# Copy the rest of the application source code and all project files
+COPY . ./
 
 # Create a non-root user and switch to it
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
