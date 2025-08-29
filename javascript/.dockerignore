@@ -11,4 +11,4 @@ docker-compose.yml
 .git
 .gitignore
 README.md
-public
+# public
