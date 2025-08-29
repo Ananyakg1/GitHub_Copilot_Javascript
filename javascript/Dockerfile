@@ -1,6 +1,6 @@
 # See https://docs.docker.com/engine/reference/builder/
 # Use a specific Node.js LTS version as base image
-FROM node:18.20.3-alpine3.19
+FROM node:18.20.3-alpine3.19.7
 
 # Set working directory
 WORKDIR /app
@@ -9,7 +9,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies with audit fix for vulnerabilities
-RUN npm install --omit=dev && npm audit fix --force
+RUN npm install --omit=dev \
+  && npm cache clean --force \
+  && npm audit fix --force
 
 # Copy the rest of the application source code
 COPY src ./src

@@ -1,3 +1,6 @@
+# Prevent npm cache and logs from being included in Docker build context
+.npm
+npm-debug.log
 node_modules
 build
 dist
