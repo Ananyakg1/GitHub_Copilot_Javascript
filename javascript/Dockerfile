@@ -14,8 +14,8 @@ RUN addgroup -g 1001 -S nodejs && \
 # Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies with security optimizations
-RUN npm install --no-audit --no-fund && \
+# Install dependencies with security optimizations (including devDependencies for build)
+RUN npm install --no-audit --no-fund --include=dev && \
   npm cache clean --force
 
 
